@@ -2,7 +2,7 @@ class Square {
   constructor (id) {
     this.id = id
     this.played = false
-    this.value = 'X'
+    this.value = null
   }
 }
 

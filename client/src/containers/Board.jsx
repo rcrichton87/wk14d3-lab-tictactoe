@@ -6,10 +6,15 @@ class Board extends React.Component {
     super(props)
   }
 
+  handleClick (event) {
+    const index = event.target.id
+    this.props.onSquareClick(this.props.state.player, index)
+  }
+
   render () {
-    const squares = this.props.squares.map((square, index) => {
+    const squares = this.props.state.squares.map((square, index) => {
       return (
-        <Square square={square} />
+        <Square square={square} index={index} handleClick={this.handleClick.bind(this)} />
       )
     })
 

@@ -13,14 +13,31 @@ class TTTContainer extends React.Component {
     }
 
     this.state = {
-      squares: squaresArray
+      squares: squaresArray,
+      player: 'X'
+    }
+  }
+
+  playSquare (player, index) {
+    console.log('index', index)
+    console.log('squares', this.state.squares)
+    console.log('square', this.state.squares[index])
+    const square = this.state.squares[index]
+    if (!square.played) {
+      square.value = this.state.player
+      square.played = true
+      if (this.state.player === 'X') {
+        this.setState({player: 'O'})
+      } else {
+        this.setState({player: 'X'})
+      }
     }
   }
 
   render () {
     return (
       <div>
-        <Board squares={this.state.squares} />
+        <Board state={this.state} onSquareClick={this.playSquare.bind(this)} />
       </div>
     )
   }
