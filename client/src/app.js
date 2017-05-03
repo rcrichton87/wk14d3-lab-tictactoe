@@ -1,9 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TTTContainer from './containers/TTTContainer'
 
-window.onload = function(){
+window.onload = function () {
   ReactDOM.render(
-    <h1> App Started </h1>,
+    <TTTContainer />
+    ,
     document.getElementById('app')
-  );
+  )
 }
