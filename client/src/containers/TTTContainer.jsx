@@ -1,4 +1,6 @@
 import React from 'react'
+import Board from './Board'
+import Square from '../models/Square'
 
 class TTTContainer extends React.Component {
   constructor (props) {
@@ -11,8 +13,9 @@ class TTTContainer extends React.Component {
 
   render () {
     return (
-      <p> The game container
-      </p>
+      <div>
+        <Board />
+      </div>
     )
   }
 }
