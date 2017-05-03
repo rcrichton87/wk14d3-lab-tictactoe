@@ -5,8 +5,6 @@ class WinChecker {
   }
 
   checkAll (array) {
-    // console.log(array)
-    console.log('checking', this.checkRows(array), this.checkColumns(array), this.checkDiagonals(array))
     return this.checkRows(array) || this.checkColumns(array) || this.checkDiagonals(array)
   }
 
@@ -48,6 +46,16 @@ class WinChecker {
       }
     }
     return false
+  }
+
+  checkDraw(array){
+    let draw = true
+    array.forEach( (square) => {
+      if (square.value === null) {
+        draw = false
+      }
+    })
+    return draw
   }
 }
 export default WinChecker

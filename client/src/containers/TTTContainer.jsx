@@ -40,7 +40,6 @@ class TTTContainer extends React.Component {
     }
 
     const square = this.state.squares[index]
-    console.log('play', this.state.squares)
     if (!square.played) {
       square.value = this.state.player
       square.played = true
@@ -57,6 +56,10 @@ class TTTContainer extends React.Component {
           this.setState({player: 'X'})
         }
       }
+    }
+
+    if(this.winChecker.checkDraw(this.state.squares)){
+      this.setState({winner: "Draw! Neither player "})
     }
   }
 
