@@ -1,6 +1,7 @@
 import React from 'react'
 import Board from './Board'
 import Square from '../models/Square'
+import WinChecker from '../models/WinChecker'
 
 class TTTContainer extends React.Component {
   constructor (props) {
@@ -11,25 +12,35 @@ class TTTContainer extends React.Component {
     for (var i = 0; i < 9; i++) {
       squaresArray.push(new Square(i))
     }
-
+    this.winChecker = new WinChecker()
     this.state = {
       squares: squaresArray,
-      player: 'X'
+      player: 'X',
+      winner: null
     }
   }
 
   playSquare (player, index) {
-    console.log('index', index)
-    console.log('squares', this.state.squares)
-    console.log('square', this.state.squares[index])
+    // console.log('index', index)
+    // console.log('squares', this.state.squares)
+    // console.log('square', this.state.squares[index])
     const square = this.state.squares[index]
     if (!square.played) {
       square.value = this.state.player
       square.played = true
-      if (this.state.player === 'X') {
-        this.setState({player: 'O'})
+
+      if (this.winChecker.checkAll(this.state.squares)) {
+        // player has won, game over
+        console.log('winner found')
+        this.setState({winner: player})
+        // do some win logic / messaging here
       } else {
-        this.setState({player: 'X'})
+        // continue game
+        if (this.state.player === 'X') {
+          this.setState({player: 'O'})
+        } else {
+          this.setState({player: 'X'})
+        }
       }
     }
   }
