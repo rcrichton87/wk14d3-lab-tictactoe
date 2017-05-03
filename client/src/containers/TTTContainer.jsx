@@ -6,15 +6,21 @@ class TTTContainer extends React.Component {
   constructor (props) {
     super(props)
 
+    const squaresArray = []
+
+    for (var i = 0; i < 9; i++) {
+      squaresArray.push(new Square(i))
+    }
+
     this.state = {
-      squares: []
+      squares: squaresArray
     }
   }
 
   render () {
     return (
       <div>
-        <Board />
+        <Board squares={this.state.squares} />
       </div>
     )
   }
